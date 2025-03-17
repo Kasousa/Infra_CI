@@ -28,8 +28,8 @@ resource "aws_ecs_task_definition" "Go-API" {
         "essential" = true
         "portMappings" = [
           {
-            "containerPort" = 8000
-            "hostPort"      = 8000
+            "containerPort" = 8080
+            "hostPort"      = 8080
           }
         ]
         "environment"= [
@@ -72,7 +72,7 @@ resource "aws_ecs_service" "Go-API" {
   load_balancer {
     target_group_arn = aws_lb_target_group.alvo.arn
     container_name   = "homolog"
-    container_port   = 8000
+    container_port   = 8080
   }
 
   network_configuration {
